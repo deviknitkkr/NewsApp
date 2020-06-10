@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<com.github.ybq.android.spinkit.SpinKitView
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		android:id="@+id/progressbar"
+		style="@style/SpinKitView"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		app:SpinKit_Color="@color/colorAccent"
+		android:layout_centerInParent="true"/>
+
+</RelativeLayout>
+
