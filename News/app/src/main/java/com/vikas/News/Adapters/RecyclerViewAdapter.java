@@ -25,6 +25,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 	private static int View_Progress=2;
 	Animation forward_anim;
     Animation backward_anim;
+	Animation fade_in_anim;
 	
     public RecyclerViewAdapter(List<Article> list, Context context)
     {
@@ -35,7 +36,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 		
 		TelephonyManager tm = (TelephonyManager)context.getSystemService(context.TELEPHONY_SERVICE);
         countryCode = tm.getNetworkCountryIso();
-
+		
     }
 
     @Override
@@ -56,10 +57,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     {
 		if (getItemViewType(p2) == View_News)
 		{
-
+			fade_in_anim=AnimationUtils.loadAnimation(context,R.anim.abc_fade_in);
 			Article temp=list.get(p2);
 			((NewsViewHolder)p1).article_source_name.setText(temp.source.getName());
 			((NewsViewHolder)p1).article_title.setText(temp.title);
+			((NewsViewHolder)p1).article_title.setAnimation(fade_in_anim);
 			((NewsViewHolder)p1).article_publish_time.setText(getFormattedTime(temp.publishedAt));
 			((NewsViewHolder)p1).article_description.setText(temp.description);
 
