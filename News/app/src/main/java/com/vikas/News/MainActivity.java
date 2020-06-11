@@ -13,7 +13,6 @@ import android.view.*;
 import android.widget.*;
 import com.vikas.News.Adapters.*;
 import com.vikas.News.Fragments.*;
-
 import android.support.v7.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity
@@ -22,7 +21,7 @@ public class MainActivity extends AppCompatActivity
     private ViewPagerAdapter mViewPagerAdapter;
     private ViewPager mViewPager;
 	private String API_KEY="8cfd5953c4564098af22f732bdb27675";
-
+	
 	@Override
     protected void onCreate(Bundle savedInstanceState)
 	{
@@ -33,6 +32,8 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		toolbar.setNavigationIcon(R.drawable.ic_search_white_24dp);
 		
         mViewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), this);
 		TelephonyManager tm = (TelephonyManager)this.getSystemService(this.TELEPHONY_SERVICE);
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity
 
 		TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
-
+		
 		isInternetOn();
     }
 	
@@ -101,6 +102,7 @@ public class MainActivity extends AppCompatActivity
 	{
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+	   // searchView.setMenuItem(menu.getItem(android.R.id.home));
         return true;
     }
 
@@ -113,7 +115,10 @@ public class MainActivity extends AppCompatActivity
 		switch (id)
 		{
 			case R.id.action_settings:
-				Toast.makeText(this, "ये अभी काम नही करती", Toast.LENGTH_SHORT).show();
+				Toast.makeText(this,item.getTitle(), Toast.LENGTH_SHORT).show();
+				return true;
+			case android.R.id.home:
+				startActivity(new Intent(this,SearchTopicsActivity.class));
 				return true;
 		}
 

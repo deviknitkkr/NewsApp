@@ -72,6 +72,7 @@ public class Headlines extends Fragment
 					if (!isLoading && totalItemCount <= (lastVisibleItem+1)) {
 						loadMore();
 						isLoading = true;
+						
 					}
 				}
 		});
@@ -173,7 +174,7 @@ public class Headlines extends Fragment
 		else
 		{
 			headlines.remove(headlines.size()-1);
-			adapter.notifyDataSetChanged();
+			adapter.notifyItemRemoved(headlines.size()-1);
 		}
 	}
 }
