@@ -1,1 +1,1 @@
-# PackageResolver
+# NewsApp
